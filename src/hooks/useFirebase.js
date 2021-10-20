@@ -8,6 +8,7 @@ import {
   onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
+  sendEmailVerification,
 } from "firebase/auth";
 import { useState, useEffect } from "react";
 
@@ -99,6 +100,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         setUser(userCredential.user);
         setErr("");
+        emailVerification();
         setUserName();
         // console.log(user);
       })
@@ -144,6 +146,14 @@ const useFirebase = () => {
 
     return () => unSubscribed;
   }, [auth]);
+
+  //get verified by sending email
+
+  const emailVerification = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      setErr(" Verification Email Sent.Please Reload After Verification");
+    });
+  };
 
   // logout
   const logOut = () => {
