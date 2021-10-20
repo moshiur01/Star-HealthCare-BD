@@ -37,7 +37,7 @@ const Banner = () => {
 
           <Carousel.Caption>
             <h5 className="text-dark">
-              He who has health, has hope; and he who has hope, has everything..
+              He who has health, has hope and he who has hope, has everything..
             </h5>
           </Carousel.Caption>
         </Carousel.Item>

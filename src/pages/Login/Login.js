@@ -105,7 +105,7 @@ const Login = () => {
         ) : (
           <>
             <Button variant="primary mx-2" type="submit">
-              Registered
+              Register
             </Button>
             <Button onClick={signInUsingGoogle} variant="primary" type="submit">
               Google Sign In

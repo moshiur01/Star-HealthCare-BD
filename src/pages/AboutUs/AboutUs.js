@@ -1,10 +1,11 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+
 import "./AboutUs.css";
 
 const AboutUs = () => {
   return (
-    <Container className="container-fluid">
+    <Container className="container-fluid ">
       <div className="about-body">
         <h1>Star HealthCare BD</h1>
         <p>

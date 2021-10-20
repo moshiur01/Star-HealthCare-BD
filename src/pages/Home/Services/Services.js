@@ -4,8 +4,7 @@ import useServices from "../../../hooks/useServices";
 import Service from "../Service/Service";
 
 const Services = () => {
-  const { services } = useServices([]);
-
+  const { services } = useServices();
   return (
     <div>
       <Container className="text-center container-fluid">

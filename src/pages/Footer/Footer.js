@@ -22,7 +22,6 @@ const Footer = () => {
               <h1>Find Us In</h1>
 
               <h4>Facebook</h4>
-              <h4>App</h4>
               <h4>Instagram</h4>
               <h4>Contact Us</h4>
 

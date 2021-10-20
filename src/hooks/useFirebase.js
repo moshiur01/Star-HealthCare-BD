@@ -153,7 +153,7 @@ const useFirebase = () => {
         setUser("");
       })
       .finally(() => {
-        isLoading(false);
+        setIsLoading(false);
       });
   };
 
