@@ -1,8 +1,10 @@
 import React from "react";
 import { Button, Form } from "react-bootstrap";
+import { useHistory, useLocation } from "react-router";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
+  const location = useLocation();
   const {
     emailFormValue,
     passwordFormValue,
@@ -13,7 +15,17 @@ const Login = () => {
     processLogin,
     nameFormValue,
     signInUsingGoogle,
+    locationValue,
+    setUser,
+    setIsLoading,
+    setErr,
   } = useAuth();
+  const history = useHistory();
+  const redirectUrl = location.state?.from || "/home";
+
+  // send location form value
+  locationValue(location);
+
   //get email form value
   const getEmailFormValue = (e) => {
     emailFormValue(e.target.value);
@@ -43,6 +55,22 @@ const Login = () => {
   // toggle login or Sign Up
   const toggleLogIn = (e) => {
     checkBoxFelidValue(e.target.checked);
+  };
+  const handleGoogleSignIn = () => {
+    signInUsingGoogle()
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+        setUser(user);
+
+        history.push(redirectUrl);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setErr(error.message);
+      });
   };
 
   return (
@@ -107,7 +135,11 @@ const Login = () => {
             <Button variant="primary mx-2" type="submit">
               Register
             </Button>
-            <Button onClick={signInUsingGoogle} variant="primary" type="submit">
+            <Button
+              onClick={handleGoogleSignIn}
+              variant="primary"
+              type="submit"
+            >
               Google Sign In
             </Button>
           </>

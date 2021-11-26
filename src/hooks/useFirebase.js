@@ -41,6 +41,10 @@ const useFirebase = () => {
   const emailFormValue = (email) => {
     setEmail(email);
   };
+
+  // state for get location value
+  const [loc, setLocation] = useState({});
+
   //get password form value form user
   const passwordFormValue = (password) => {
     if (password.length < 6) {
@@ -112,25 +116,29 @@ const useFirebase = () => {
       });
   };
 
-  // google log in
+  const locationValue = (e) => {
+    setLocation(e);
+  };
 
   const signInUsingGoogle = () => {
     setIsLoading(true);
     const GoogleProvider = new GoogleAuthProvider();
 
-    signInWithPopup(auth, GoogleProvider)
-      .then((result) => {
-        // The signed-in user info.
-        const user = result.user;
-        setUser(user);
-      })
+    return signInWithPopup(auth, GoogleProvider);
+    // .then((result) => {
+    //   // The signed-in user info.
+    //   const user = result.user;
+    //   setUser(user);
 
-      .finally(() => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setErr(error.message);
-      });
+    //   // history.push(redirectUrl.pathname);
+    // })
+
+    // .finally(() => {
+    //   setIsLoading(false);
+    // })
+    // .catch((error) => {
+    //   setErr(error.message);
+    // });
   };
   //observer user state change
   useEffect(() => {
@@ -180,6 +188,10 @@ const useFirebase = () => {
     logOut,
     isLoading,
     signInUsingGoogle,
+    locationValue,
+    setUser,
+    setIsLoading,
+    setErr,
   };
 };
 

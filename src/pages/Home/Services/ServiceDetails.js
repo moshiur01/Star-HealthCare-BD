@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 const ServiceDetails = () => {
   // get dynamic route id
   let { serviceId } = useParams();
-  console.log(serviceId);
+  // console.log(serviceId);
   // get services data
   const [ser, setSer] = useState([]);
 
